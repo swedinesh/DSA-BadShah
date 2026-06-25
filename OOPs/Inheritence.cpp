@@ -1,15 +1,15 @@
 #include<iostream>
 using namespace std;
 
+
 class Vehicle{
 
-private:
+protected:
 string name;
-
-public:
 string model;
 int noOfTyres;
 
+public:
 //Vehicle constructor
 Vehicle(string _name, string _model, int _noOfTyres){
     cout<<"\nVehicle Constructor is on"<<endl;
@@ -47,17 +47,24 @@ class Car : public Vehicle{
    }
 
    void startAC(){
-    cout<<"\n Car AC is ON "<<model<<endl;
+   cout<<"\n Car AC is ON "<<name<<endl;
    }
+
 ~Car(){
     cout<<"\nCar is OFF!"<<endl;
 }
+
 };
 
-int main(){
-    Car A("TATA Sierra", "Accomplished ", 4, 5, "Manual");
 
-A.start_engine();
+int main(){
+
+    Car A("TATA Sierra", "Accomplished 1.5L Petrol ", 4, 5, "Manual");
+    A.startAC();
+    A.start_engine();
+    A.stop_engine();
 
     return 0;
 }
+
+
