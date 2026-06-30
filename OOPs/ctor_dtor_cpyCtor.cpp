@@ -36,7 +36,6 @@ class Student{
     }
     Student(const Student &m){
           cout << "Copy Constructor Called\n";
-
         id = m.id;
         name = m.name;
         clg = m.clg;
