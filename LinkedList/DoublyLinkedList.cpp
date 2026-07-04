@@ -261,12 +261,27 @@ public:
             forward->pre = temp;
             temp->next = forward;
 
+            current->next = NULL;
+            current->pre = NULL;
+
             delete current;
+        }
+    }
+
+    void reverse(){
+        Node* s = head;
+        Node* e = tail;
+
+        while(s != e){
+            swap(s->data,e->data);
+            s = s->next;
+            e = e->pre;
         }
     }
 
     ~Operation()
     {
+        cout<<" === destructor is calling === "<<endl;
         while (head)
             pop_front();
     }
@@ -289,62 +304,47 @@ int main()
     }
 
     m->displayForward();
+    
+    m->reverse();
+
+    m->displayForward();
+
     // m->displayBackward();
 
-    m->insertKthPosForward(19, 1);
-    m->displayForward();
-    m->insertKthPosForward(39, 7);
-    m->displayForward();
-    m->insertKthPosForward(108, 4);
-    m->displayForward();
+    // m->insertKthPosForward(19, 1);
+    // m->displayForward();
+    // m->insertKthPosForward(39, 7);
+    // m->displayForward();
+    // m->insertKthPosForward(108, 4);
+    // m->displayForward();
 
-    m->pop_front();
-    m->displayForward();
-    m->pop_end();
-    m->displayForward();
-    m->deleteKthPos(3);
-    m->displayForward();
+    // m->pop_front();
+    // m->displayForward();
+    // m->pop_end();
+    // m->displayForward();
+    // m->deleteKthPos(3);
+    // m->displayForward();
 
-    m->pop_end();
-    m->displayForward();
+    // m->pop_end();
+    // m->displayForward();
 
-    m->pop_end();
-    m->displayForward();
+    // m->pop_end();
+    // m->displayForward();
 
-    m->pop_end();
-    m->displayForward();
+    // m->pop_end();
+    // m->displayForward();
 
-    m->pop_end();
-    m->displayForward();
+    // m->pop_end();
+    // m->displayForward();
 
-    m->pop_end();
-    m->displayForward();
+    // m->pop_end();
+    // m->displayForward();
 
-    m->pop_end();
-    m->displayForward();
+    // m->pop_end();
+    // m->displayForward();
+
+    delete m;
 
     return 0;
 }
 
-/*
-if (head == tail)
-{
-delete head;
-head = tail = NULL;
-return;
-}
-
-Node* temp = head;
-
-while (temp->next != tail)
-{
-temp = temp->next;
-}
-
-Node* end = tail;
-
-tail = temp;
-tail->next = NULL;
-
-delete end;
-*/

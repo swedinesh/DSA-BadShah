@@ -61,7 +61,7 @@ void display(){
 
     while( temp != NULL){
         cout<<temp->data;
-        if(temp != tail) cout<<" --> ";
+         cout<<" --> ";
         temp = temp->next;
     }
 cout<<endl;
@@ -183,6 +183,91 @@ void deleteAtKthElement(int pos){
     return;
 }
 
+Node* recursiveReverse(Node* pre, Node* current){
+
+    if(current == NULL){
+        return pre;
+    }
+
+    Node* forward = current->next;
+    current->next = pre;
+    pre = current;
+
+    return recursiveReverse(current, forward);
+
+}
+
+
+Node* mid(Node* slow, Node* fast, int& count){
+      if(fast == NULL || fast->next == NULL)
+      return slow;
+
+      count++;
+
+return mid(slow->next, fast->next->next, count);
+}
+
+Node* mid(Node* slow, Node* fast){
+      if(fast == NULL || fast->next == NULL)
+      return slow;
+
+
+return mid(slow->next, fast->next->next);
+}
+
+bool checkPalindrom(Node* head){
+
+    int len = length();
+    Node* midi = mid(head, head);
+    
+    Node* finalmid = NULL;
+
+    if( len & 1){
+        //odd lenght
+        finalmid = midi->next;
+    }
+    else{
+        //even case
+      finalmid = midi;
+    }
+
+   // Node* reverseMid = recursiveReverse(NULL, midi);
+
+   // reverse list
+
+   reverse(finalmid);
+
+    Node* temp = head;
+
+    while( finalmid != NULL  && temp != NULL){
+
+        if(temp->data != finalmid->data) return false;
+        
+        finalmid = finalmid->next;
+        temp = temp->next; 
+    }
+
+    return true;
+
+}
+
+void reverse(Node* &head){
+    if(head==NULL){
+        return;
+    }
+
+    Node* pre = NULL;
+    Node* curr = head;
+
+    while(curr != NULL){
+        Node* forw = curr->next;
+        curr->next = pre;
+        pre = curr;
+        curr = forw;
+    }
+
+    head = pre;
+}
 
 };
 
@@ -203,11 +288,29 @@ for(int i=0; i<n; i++){
 }
 
 ll->display();
-cout<<endl;
-ll->recusiveDisplay(ll->head);
-cout<<endl;
-cout<<"length : "<<ll->length();
-cout<<endl;
+
+int count = 0;
+
+Node* middle = ll->mid(ll->head,ll->head, count);
+
+cout<<"Index : "<<count<<" and middle element is : "<<middle->data<<endl;
+
+cout<<"1. true and 0 false : "<<ll->checkPalindrom(ll->head)<<endl;
+
+ll->display();
+
+// ll->head = ll->recursiveReverse(NULL, ll->head);
+
+//  cout<<endl;
+// ll->display();
+
+
+
+
+// ll->recusiveDisplay(ll->head);
+// cout<<endl;
+// cout<<"length : "<<ll->length();
+// cout<<endl;
 // ll->convertIntoCircular();
 // ll->displayCircular();
 cout<<endl;
@@ -215,13 +318,16 @@ cout<<endl;
 // ll->inserAtKthPosition(69,6);
 // ll->display();
 // cout<<endl;
-ll->deleteAtKthElement(1);
-ll->display();
-ll->deleteAtKthElement(1);
-ll->display();
-ll->deleteAtKthElement(1);
-ll->display();
-cout<<endl;
+
+// ll->deleteAtKthElement(1);
+// ll->display();
+// ll->deleteAtKthElement(1);
+// ll->display();
+// ll->deleteAtKthElement(1);
+// ll->display();
+// cout<<endl;
+
+
 
     return 0;
 }
