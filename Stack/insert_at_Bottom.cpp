@@ -136,6 +136,28 @@ void insertInSortedStack(stack<int>& s, int val){
     
 }
 
+void insertInSortedStack_NEW(stack<int>& s, int val){
+
+    if(s.empty()){
+      s.push(val);
+      return;
+    }
+    
+    if(val <= s.top()){
+        s.push(val);
+        return;
+    }
+    else{
+         int temp = s.top();
+         s.pop();
+         insertInSortedStack_NEW(s, val);
+         s.push(temp);
+         return;
+    }
+ 
+    
+}
+
 
 void sort(stack<int> &s){
   if(s.empty()) return;
@@ -145,7 +167,7 @@ void sort(stack<int> &s){
 
   sort(s);
   insertInSortedStack(s,temp);
-}
+}  
 
 
 int main()
@@ -153,10 +175,10 @@ int main()
 
     stack<int> s;
 
-    s.push(1);
-    s.push(2);
+    s.push(7);
+    s.push(5);
     s.push(3);
-    s.push(4);
+    s.push(1);
     
     // int n = s.size();
     // cout << "Size : " << n << endl;
@@ -179,12 +201,12 @@ int main()
     // int min = INT_MIN;
     // cout<<checkSorted(s, min)<<endl;
 
-    // insertInSortedStack(s,2);
-    // insertInSortedStack(s,4);
-    // insertInSortedStack(s,6);
-    // insertInSortedStack(s,8);
+    insertInSortedStack_NEW(s,2);
+    insertInSortedStack_NEW(s,4);
+    insertInSortedStack_NEW(s,6);
+    insertInSortedStack_NEW(s,8);
 
-    sort(s);
+   // sort(s);
 
     print(s);
 
