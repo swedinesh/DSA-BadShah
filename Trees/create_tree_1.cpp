@@ -164,10 +164,6 @@ public:
         return maxi;
     }
 
-
-    
-
-
     int diameterOfBinaryTree(Node* root){
        
     if(root==NULL) return 0;
@@ -179,6 +175,21 @@ public:
      int ans = max(option1, max(option2, option3));
 
      return ans;
+    }
+
+    int maxDepth1(Node* root){
+        if(root==NULL) return 0;
+
+        int leftHeight = maxDepth1(root->left);
+        //cout<<"leftHeight : "<<leftHeight<<endl;
+
+        int rightHeight = maxDepth1(root->right);
+        //cout<<"rightHeight : "<<rightHeight<<endl;
+
+        int ans = max(leftHeight, rightHeight)+1;
+         //cout<<"Ans : "<<ans<<endl;
+
+       return ans;
     }
 };
 
@@ -222,21 +233,30 @@ int main()
 
     root = t.createTree();
 
-    cout<<endl<<" === Pre Order Traversal === "<<endl;
-    t.preOrderTraversal(root);
+    cout<<endl;
 
-    cout<<endl<<" === In Order Traversal === "<<endl;
-    t.inOrderTraversal(root);
+    cout<<"m1 : "<< t.maxDepth1(root);
 
-    cout<<endl<<" === Post Order Traversal === "<<endl;
-    t.postOrderTraversal(root);
+    cout<<endl;
+
+    cout<<t.maxDepth(root);
+    cout<<endl;
+
+    // cout<<endl<<" === Pre Order Traversal === "<<endl;
+    // t.preOrderTraversal(root);
+
+    // cout<<endl<<" === In Order Traversal === "<<endl;
+    // t.inOrderTraversal(root);
+
+    // cout<<endl<<" === Post Order Traversal === "<<endl;
+    // t.postOrderTraversal(root);
     
-    cout<<endl<<" === Level Order Traversal === "<<endl;
-    t.TruelevelOrderTraversal(root);
+    // cout<<endl<<" === Level Order Traversal === "<<endl;
+    // t.TruelevelOrderTraversal(root);
 
-    cout<<"Height : "<<t.maxDepth_height(root)<<endl;
+    // cout<<"Height : "<<t.maxDepth_height(root)<<endl;
 
-    cout<<"max diameter : "<<t.diameterOfBinaryTree(root)<<endl;
+    // cout<<"max diameter : "<<t.diameterOfBinaryTree(root)<<endl;
     
     return 0;
 }
