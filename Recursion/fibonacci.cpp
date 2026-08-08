@@ -28,6 +28,9 @@ int main(){
     cout<<"enter n th term of series : ";
     cin>>n;
 
+    // cout<<fobo(3)<<endl;
+
+
     // cout<<endl<<"N th term is : "<<fobo(n)<<endl;
     // //series
     // fibSeries(n);
