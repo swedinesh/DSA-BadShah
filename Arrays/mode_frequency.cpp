@@ -12,17 +12,19 @@ int mode(vector<int>& arr){
         if(i>0 && arr[i] != arr[i-1]) 
         c = 0;
         mapping[arr[i]] = ++c;
+        // cout<<mapping[arr[i]]<<endl;
     }
     int max = -1;
     for(int i=0; i<arr.size(); i++){
         if(max < mapping[arr[i]]){
             max = mapping[arr[i]];
+            // cout<<arr[i]<<endl;
         }
     }
     return max;
 }
 int main(){
-    vector<int> arr = {5, 6, 5, 7};
+    vector<int> arr = {1,2,3,2,8,7,6,2,2,1,2,3,3,3,3};
     sort(arr.begin(), arr.end());
     int count = mode(arr);
     cout<<endl<<"Count : "<<count<<endl;
