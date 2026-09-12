@@ -309,8 +309,8 @@ ll->display();
 
 // ll->recusiveDisplay(ll->head);
 // cout<<endl;
-// cout<<"length : "<<ll->length();
-// cout<<endl;
+cout<<"length : "<<ll->length();
+cout<<endl;
 // ll->convertIntoCircular();
 // ll->displayCircular();
 cout<<endl;

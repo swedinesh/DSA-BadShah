@@ -28,7 +28,7 @@ sub(ans, index+1, output, str);
 
 int main(){
 
-string str = "ab";
+string str = "abc";
 vector<string> ans;
 int index = 0;
 string output = "";
