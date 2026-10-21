@@ -48,12 +48,29 @@ array method to get iterator object
 cout<<"\n";
 
 array<int,5>::iterator it;
+it = a1.begin();
+*it = 53;
+*(it+2) = 99;
 for(it = a1.begin(); it!=a1.end(); it++)
 cout<<*it<<" ";
+cout<<"\n";
 
+array<int, 5>::reverse_iterator rit;
+for(rit = a1.rbegin(); rit != a1.rend(); rit++)
+cout<<*rit<<" ";
+cout<<"\n";
 
+array<int, 5>::const_iterator cit;
+ cit = a1.cbegin();
+//  *cit = 19; const not modifies
+for(cit=a1.begin(); cit!=a1.end(); cit++)
+cout<<*cit<<" ";
+cout<<"\n";
 
-
+cout<<a1.empty()<<"\n";
+cout<<a1.front()<<endl;
+cout<<a1.data()<<endl;
+cout<<a1.back()<<endl;
 }
 
 int main()
