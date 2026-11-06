@@ -1,5 +1,19 @@
 #include<bits/stdc++.h>
 using namespace std;
+
+int f1(int *val, int * wt, int w, int n)
+{
+    if(n==0||w==0) 
+    return 0;
+
+    if(wt[n-1]<=w)
+    return max(val[n-1]+f1(val, wt, w-wt[n-1], n-1),
+ f1(val, wt, w, n-1));
+
+ else if(wt[n-1]>w)
+ return f1(val, wt, w, n-1);
+}
+
  int unique(vector<int>& arr)
     {
        unordered_map<int, int> m;
